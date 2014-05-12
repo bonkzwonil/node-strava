@@ -350,9 +350,11 @@ var Strava = function(config_obj) {
 		if (arguments.length < 3) {
 		    throw new Error("Invalid arguments");
 		}
-		var types = params.types.join(",");
+		var types = "time";
+		if(params.types){
+			types = params.types.join(",");
+		}
 
-		types = "time";
 //		console.log("ST",types, id, params);
 		self._get("/activities/"+id+"/streams/"+types, params, responseHandler(callback));
 	    }
